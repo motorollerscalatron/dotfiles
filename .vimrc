@@ -2,14 +2,15 @@ set nocompatible
 filetype off 
 
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=/usr/local/opt/fzf
 call vundle#begin()
+
 Plugin 'VundleVim/Vundle.vim'
-
 Plugin 'davidhalter/jedi-vim'
-
 Plugin 'nathanaelkane/vim-indent-guides'
-
 Plugin 'scrooloose/nerdtree'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 
 call vundle#end()
 filetype plugin indent on
@@ -20,7 +21,8 @@ set number
 set clipboard=unnamed,autoselect
 let mapleader = "," 
 
-colorscheme default
+colorscheme desert
+syntax on
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
@@ -28,6 +30,10 @@ let g:indent_guides_guide_size=1
 inoremap jj <ESC>
 noremap <CR> o<ESC>
 noremap <silent> <C-T> :NERDTreeToggle<CR>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 execute pathogen#infect()
 
