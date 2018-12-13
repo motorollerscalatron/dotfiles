@@ -4,12 +4,12 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-
 Plugin 'davidhalter/jedi-vim'
-
 Plugin 'nathanaelkane/vim-indent-guides'
-
 Plugin 'scrooloose/nerdtree'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'terryma/vim-multiple-cursors'
 
 call vundle#end()
 filetype plugin indent on
@@ -21,6 +21,8 @@ set clipboard=unnamed,autoselect
 let mapleader = "," 
 
 colorscheme default
+set background=light
+syntax on
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
@@ -28,7 +30,10 @@ let g:indent_guides_guide_size=1
 inoremap jj <ESC>
 noremap <CR> o<ESC>
 noremap <silent> <C-T> :NERDTreeToggle<CR>
-
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 execute pathogen#infect()
 
 set statusline+=%#warningmsg#
@@ -41,3 +46,13 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
 let g:syntastic_ruby_checkers = ['rubocop']
+
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+augroup ProjectDrawer
+  autocmd!
+  autocmd VimEnter * :Vexplore
+augroup END
