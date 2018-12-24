@@ -1,4 +1,5 @@
 set nocompatible
+
 filetype off 
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -11,6 +12,12 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/nerdtree'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'itchyny/lightline.vim'
+Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 call vundle#end()
 filetype plugin indent on
@@ -21,7 +28,8 @@ set number
 set clipboard=unnamed,autoselect
 let mapleader = "," 
 
-colorscheme desert
+set background=light
+colorscheme PaperColor
 syntax on
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_start_level=2
@@ -41,9 +49,19 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+set laststatus=2
+
+set termencoding=utf-8
+set encoding=utf-8
+set fileencodings=iso-2022-jp,utf-8,cp932,euc-jp
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
 let g:syntastic_ruby_checkers = ['rubocop']
+let g:lightline = { 'colorscheme': 'PaperColor' }
+let g:go_version_warning = 0
+let g:BASH_Ctrl_j = 'off'
+
