@@ -1,9 +1,10 @@
 set nocompatible
 
-filetype off 
-
 set rtp+=~/.vim/bundle/Vundle.vim
 set rtp+=/usr/local/opt/fzf
+set encoding=utf-8
+set fileencodings=utf-8,cp932
+
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
@@ -18,6 +19,12 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'AndrewRadev/switch.vim'
+Plugin 'tpope/vim-rails'
+Plugin 'basyura/unite-rails'
+Plugin 'tpope/vim-endwise'
+"Plugin 'thinca/vim-ref'
+Plugin 'junegunn/fzf.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -26,6 +33,10 @@ set shiftwidth=4
 set expandtab
 set number
 set clipboard=unnamed,autoselect
+set fileformats=unix,dos,mac
+set fileencodings=utf-8,sjis
+set tags=.tags;$HOME
+
 let mapleader = "," 
 
 set background=light
@@ -37,11 +48,14 @@ let g:indent_guides_guide_size=1
 
 inoremap jj <ESC>
 noremap <CR> o<ESC>
-noremap <silent> <C-T> :NERDTreeToggle<CR>
+noremap <silent> <C-e> :NERDTreeToggle<CR>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+nnoremap <silent> <C-z> :FZF<CR>
+
+map ] :NERDTreeFind<CR>
 
 execute pathogen#infect()
 
@@ -65,6 +79,17 @@ let g:lightline = { 'colorscheme': 'PaperColor' }
 let g:go_version_warning = 0
 let g:BASH_Ctrl_j = 'off'
 
+function! s:execute_ctags() abort
+  let tag_name = '.tags'
+  let tags_path = findfile(tag_name, '.;')
+  if tags_path ==# ''
+    return
+  endif
+
+  let tags_dirpath = fnamemodify(tags_path, ':p:h')
+  execute 'silent !cd' tags_dirpath '&& ctags -R -f' tag_name '2> /dev/null &'
+endfunction
+
 "let g:netrw_banner = 0
 "let g:netrw_liststyle = 3
 "let g:netrw_browse_split = 4
@@ -74,3 +99,12 @@ let g:BASH_Ctrl_j = 'off'
 "  autocmd!
 "  autocmd VimEnter * :Vexplore
 "augroup END
+"
+autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
+autocmd FileType eruby setlocal expandtab shiftwidth=2 tabstop=2
+
+augroup ctags
+  autocmd!
+  autocmd BufWritePost * call s:execute_ctags()
+augroup END
+
