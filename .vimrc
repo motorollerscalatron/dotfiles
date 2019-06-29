@@ -25,6 +25,7 @@ Plugin 'basyura/unite-rails'
 Plugin 'tpope/vim-endwise'
 "Plugin 'thinca/vim-ref'
 Plugin 'junegunn/fzf.vim'
+Plugin 'slim-template/vim-slim.git'
 
 call vundle#end()
 filetype plugin indent on
