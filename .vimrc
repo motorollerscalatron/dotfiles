@@ -37,6 +37,8 @@ set clipboard=unnamed,autoselect
 set fileformats=unix,dos,mac
 set fileencodings=utf-8,sjis
 set tags=.tags;$HOME
+set hlsearch
+set scrolloff=7
 
 let mapleader = "," 
 
