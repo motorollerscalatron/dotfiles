@@ -26,6 +26,7 @@ Plugin 'tpope/vim-endwise'
 "Plugin 'thinca/vim-ref'
 Plugin 'junegunn/fzf.vim'
 Plugin 'slim-template/vim-slim.git'
+Plugin 'posva/vim-vue'
 
 call vundle#end()
 filetype plugin indent on
