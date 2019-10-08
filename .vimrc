@@ -61,6 +61,11 @@ nnoremap <silent> <C-z> :FZF<CR>
 
 map ] :NERDTreeFind<CR>
 
+map <Leader>. <c-w>10>
+map <Leader>m <c-w>10<
+map <Leader>k <c-w>3+
+map <Leader>j <c-w>3-
+
 execute pathogen#infect()
 
 set statusline+=%#warningmsg#
