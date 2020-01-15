@@ -1,8 +1,12 @@
+#!/bin/sh
+#/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 #mkdir ~/.tmux/plugins/tpm
 #brew install coreutils
 #brew install tree
 #brew install fzf
-#!/bin/sh
+#brew install ag
+#brew install neovim
+#brew install awscli
 #ln -sf ~/dotfiles/.vimrc ~/.vimrc
 #ln -sf ~/dotfiles/.rubocop.yml ~/.rubocop.yml
 #ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
