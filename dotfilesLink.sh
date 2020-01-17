@@ -1,6 +1,7 @@
-#!/bin/sh
+#!/bin/zsh
 #/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 #mkdir ~/.tmux/plugins/tpm
+#mkdir ~/.config/nvim
 #brew install coreutils
 #brew install tree
 #brew install fzf
