@@ -30,6 +30,8 @@ Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'slim-template/vim-slim.git'
 Plugin 'posva/vim-vue'
+Plugin 'kana/vim-tabpagecd'
+Plugin 'thinca/vim-quickrun'
 
 call vundle#end()
 filetype plugin indent on
@@ -42,6 +44,8 @@ set fileencodings=utf-8,sjis
 set tags=.tags;$HOME
 set hlsearch
 set scrolloff=7
+set mouse=nv
+set clipboard=unnamed
 
 let mapleader = "," 
 
@@ -59,6 +63,7 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <silent> <C-z> :FZF<CR>
+
 
 map ] :NERDTreeFind<CR>
 
@@ -109,7 +114,7 @@ endfunction
 "
 autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType eruby setlocal expandtab shiftwidth=2 tabstop=2
-autocmd BufNewFile,BufRead *.tsx set syntax=typescript
+autocmd BufNewFile,BufRead *.ts *.tsx set syntax=typescript
 
 augroup ctags
   autocmd!
