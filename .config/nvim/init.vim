@@ -12,11 +12,9 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/nerdtree'
 Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
 Plugin 'itchyny/lightline.vim'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'leafgarland/typescript-vim'
 Plugin 'Quramy/tsuquyomi'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
@@ -25,13 +23,17 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
 Plugin 'basyura/unite-rails'
 Plugin 'tpope/vim-endwise'
-"Plugin 'thinca/vim-ref'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'slim-template/vim-slim.git'
 Plugin 'posva/vim-vue'
 Plugin 'kana/vim-tabpagecd'
 Plugin 'thinca/vim-quickrun'
+Plugin 'prabirshrestha/async.vim'
+Plugin 'prabirshrestha/vim-lsp'
+Plugin 'prabirshrestha/asyncomplete.vim'
+Plugin 'prabirshrestha/asyncomplete-lsp.vim'
+Plugin 'mattn/vim-lsp-settings'
 
 call vundle#end()
 filetype plugin indent on
@@ -91,6 +93,21 @@ let g:lightline = { 'colorscheme': 'PaperColor' }
 let g:go_version_warning = 0
 let g:BASH_Ctrl_j = 'off'
 
+let g:lsp_diagnostics_enabled = 0
+" debug
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/vim-lsp.log')
+let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+
+if executable('typescript-language-server')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'javascript support using typescript-language-server',
+    \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+    \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json'))},
+    \ 'whitelist': ['javascript', 'javascript.jsx'],
+    \ })
+endif
+
 function! s:execute_ctags() abort
   let tag_name = '.tags'
   let tags_path = findfile(tag_name, '.;')
@@ -115,6 +132,7 @@ endfunction
 autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType eruby setlocal expandtab shiftwidth=2 tabstop=2
 autocmd BufNewFile,BufRead *.ts *.tsx set syntax=typescript
+autocmd VimEnter,BufNewFile,BufRead * if &ft == 'typescriptreact' | set ft=typescript.tsx | endif
 
 augroup ctags
   autocmd!
