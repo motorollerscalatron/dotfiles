@@ -1,11 +1,11 @@
 set nocompatible
 
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.config/nvim/bundle/Vundle.vim
 set rtp+=/usr/local/opt/fzf
 set encoding=utf-8
 set fileencodings=utf-8,cp932
 
-call vundle#begin()
+call vundle#begin("~/.config/nvim/bundle")
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'davidhalter/jedi-vim'
