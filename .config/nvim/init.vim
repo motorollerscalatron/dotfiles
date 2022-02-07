@@ -1,6 +1,6 @@
 set nocompatible
 
-set rtp+=~/.config/nvim/bundle/Vundle.vim
+set rtp+=~/.config/nvim/bundle/vundle
 set rtp+=/usr/local/opt/fzf
 set encoding=utf-8
 set fileencodings=utf-8,cp932
